@@ -1,7 +1,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"main": ".open-next/worker.js",
-	"name": "finora-frontend",
+	"name": "financas-front",
 	"compatibility_date": "2026-09-10",
 	"compatibility_flags": [
 		"nodejs_compat",
@@ -13,15 +13,17 @@
 	},
 	"services": [
 		{
-			// Self-reference service binding, the service name must match the worker name
-			// see https://opennext.js.org/cloudflare/caching
+			// Self-reference service binding.
+			// O nome do service deve ser igual ao nome do Worker.
 			"binding": "WORKER_SELF_REFERENCE",
-			"service": "finora-frontend"
+			"service": "financas-front"
 		}
 	],
 	"images": {
-		// Enable image optimization
-		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
+	},
+
+	"vars": {
+		"API_BASE_URL": "https://financas-back-production.up.railway.app"
 	}
 }
